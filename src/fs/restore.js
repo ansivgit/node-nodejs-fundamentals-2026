@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { access, constants, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 
 import { getBasePath } from '../utils.js';
 import { ERR_MSG } from '../constants.js';
@@ -22,8 +22,8 @@ const restore = async () => {
   }
 
   try {
+    await access(pathToTarget);
 
-    await access(pathToTarget, constants.F_OK);
     throw new Error(`${ERR_MSG} Target folder already exists`);
   } catch (error) {
     if (error.code !== 'ENOENT') {
@@ -37,7 +37,7 @@ const restore = async () => {
     const fullPath = path.join(pathToTarget, entry.path);
     const dir = path.dirname(fullPath);
 
-    if (!await access(dir, constants.F_OK)) {
+    if (!await access(dir)) {
       await mkdir(dir, { recursive: true });
     }
 
