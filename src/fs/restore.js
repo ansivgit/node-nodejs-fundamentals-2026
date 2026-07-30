@@ -15,7 +15,6 @@ const restore = async () => {
 
   try {
     data = JSON.parse(await readFile(`${pathToSnapshot}/snapshot.json`, 'utf8'));
-
   } catch (err) {
     console.info(ERR_MSG, err);
     return;
