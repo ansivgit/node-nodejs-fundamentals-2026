@@ -5,6 +5,7 @@ import { getBasePath } from '../utils.js';
 import { ERR_MSG } from '../constants.js';
 
 const snapshot = async () => {
+  //! change to root project path
   const basePath = getBasePath();
   const pathToWorkspace = path.join(basePath, 'workspace');
 

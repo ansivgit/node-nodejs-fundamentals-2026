@@ -1,5 +1,5 @@
 import path from 'node:path';
-import {readdir, readFile, writeFile} from 'node:fs/promises';
+import { readdir, readFile, writeFile} from 'node:fs/promises';
 
 import { getBasePath } from '../utils.js';
 import { ERR_MSG } from '../constants.js';
